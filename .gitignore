@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -99,3 +100,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+.DS_Store
+crash/
+fuzz_files/
