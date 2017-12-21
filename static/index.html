@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DAF Framework</title>
+
+    <meta name="description" content="Droid Application Fuzzing Framework">
+    <meta name="author" content="Ajin Abraham">
+
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header" align="center">
+				<h1>
+					DAFF <h3><font color="green">Droid</font> Application Fuzzing Framework</h3>
+				</h1>
+			</div>
+		</div>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label for="status">Status</label>
+	  			<textarea class="form-control" rows="5" id="status" disabled></textarea>				   
+					
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 col-md-offset-1">
+				<form role="form" id="fuzz_form">
+				<div class="form-group">
+					 
+					<label class="form-group" for="component">
+						Fuzz Component
+					</label>
+				    </br>
+					<input class="form-group" type="radio" name="component" value="browser" checked> Browser 
+  					<input class="form-group" type="radio" name="component" value="pdf_reader"> PDF Reader
+				</div>
+				<div class="form-group">
+					
+					 <table id="browser_table" class="table">
+					 	<thead>
+					 		<tr>
+					 			<td><strong>Browser</strong></td>
+					 			<td><strong>Fuzz Generator</strong></td>
+					 		</tr>
+					 	</thead>
+					 	<tbody>
+					 		<tr>
+					 			<td>
+								<select id="browser" name="browser" class="form-group">
+								  <option value="chrome">Google Chrome</option>
+								  <option value="firefox">Mozilla Firefox</option>
+								  <option value="opera">Opera</option>
+								  <option value="ucweb">UC Web</option>
+								</select>
+					 			</td>
+					 			<td>
+					 			 <select id="fuzz_type_browser" name="fuzz_type_browser" class="form-group">
+								  <option value="domato">Google Domato</option>
+					  			  <option value="pregenerated">Pregenerated Files (3rd Party Fuzzer)</option>
+								</select>
+
+					 			</td>
+					 		</tr>
+					 	</tbody>
+					 </table>
+			
+				</div>
+				<div class="form-group">
+					
+					 <table id="pdf_table" class="table">
+					 	<thead>
+					 		<tr>
+					 			<td><strong>PDF Reader</strong></td>
+					 			<td><strong>Fuzz Generator</strong></td>
+					 		</tr>
+					 	</thead>
+					 	<tbody>
+					 		<tr>
+					 			<td>
+								<select id="pdf_reader" name="pdf_reader" class="form-group">
+								  <option value="adobe">Adobe Reader</option>
+								  <option value="google">Google PDF Reader</option>
+								  <option value="wpsoffice">WPS Office</option>
+								  <option value="foxit">Foxit Reader</option>
+								  <option value="polaris">Polaris PDF Reader</option>
+								</select>
+					 			</td>
+					 			<td>
+					 			 <select id="fuzz_type_pdf" name="fuzz_type_pdf" class="form-group">
+								  <option value="domato">Google Domato</option>
+								  <option value="dumb">Dumb Fuzz</option>
+					  			  <option value="pregenerated">Pregenerated Files (3rd Party Fuzzer)</option>
+								</select>
+
+					 			</td>
+					 		</tr>
+					 	</tbody>
+					 </table>
+					
+				</div>
+
+				<div class="form-group">
+					 
+					<label class="form-group" for="iteration">
+						Fuzz Iteration
+					</label>
+				    <h6><i> -1 = Infinite iterations or run until pre-generated fuzz files are over.</i></h6>
+					<input id="iteration" class="form-group" type="text" name="iteration" value="-1">
+				</div>
+			    </form>
+				<div align="center">
+					<button id="start" type="submit" class="btn btn-success">
+						Start Fuzzer
+					</button>
+					<button id="stop" type="submit" class="btn btn-danger">
+						Kill Fuzzer
+					</button>
+				</div>
+		    </div>
+	    </div>
+</div>
+
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+  <script type="text/javascript">
+  	function write_status(message){
+  		$('#status').append(message + "\n"); 
+    	$('#status').scrollTop($('#status')[0].scrollHeight);
+  	}
+  	function check_fuzzer(){
+  	  var fuzzer = $('input[name=component]:checked', '#fuzz_form').val();
+      if (fuzzer === "browser"){
+      	 $('#pdf_table').hide();
+      	 $('#browser_table').show();
+      } else if (fuzzer === "pdf_reader"){
+      	$('#pdf_table').show();
+      	 $('#browser_table').hide();
+      } 
+  	}
+  	$('#fuzz_form input').on('change', function() {
+  		check_fuzzer();
+    });
+
+    $( "#start" ).one( "click", function() {
+    	$('#start').prop('disabled', true);
+    	var fuzzer = $('input[name=component]:checked', '#fuzz_form').val();
+    	if (fuzzer === "browser"){
+	    	$.post("/browser_fuzz", {
+		        browser: $("#browser option:selected").val(),
+		        fuzzer: $("#fuzz_type_browser option:selected").val(),
+		        iteration: $("#iteration").val()
+		    });
+		    write_status("Browser Fuzzing Started!");
+		    write_status("["+new Date().toUTCString()+"]");
+		    write_status("Browser: " + $("#browser option:selected").val());
+		    write_status("Fuzz Generator: " + $("#fuzz_type_browser option:selected").val());
+		    write_status("Fuzz Iteration: " + $("#iteration").val());
+   		 } else if (fuzzer === "pdf_reader"){
+   		 	$.post("/pdf_fuzz", {
+		        pdf_reader: $("#pdf_reader option:selected").val(),
+		        fuzzer: $("#fuzz_type_browser option:selected").val(),
+		        iteration: $("#iteration").val()
+		    });
+		    write_status("PDF Fuzzing Started!");
+		    write_status("["+new Date().toUTCString()+"]");
+		    write_status("PDF Reader: " + $("#pdf_reader option:selected").val());
+		    write_status("Fuzz Generator: " + $("#fuzz_type_browser option:selected").val());
+		    write_status("Fuzz Iteration: " +  $("#iteration").val());
+
+   		 }
+     });
+    $( "#stop" ).one( "click", function() {
+    	$('#stop').prop('disabled', true);
+    	$.post("/stop");
+    	write_status("Server Killed!")
+    });
+    $(document).ready(function() {
+    	check_fuzzer();
+    	write_status("Droid Fuzzing Framework Ready!");
+    	setInterval(function(){
+    		$.post( "/crashes", function( data ) {
+			  if (data.crash > 0) {
+			  	write_status("["+new Date().toUTCString()+"] Crash Detected!");
+			  	write_status("No of Crashes: "+ data.crash);
+			  }
+			});
+
+    	}, 60000);
+  	});
+  </script>
+</html>
