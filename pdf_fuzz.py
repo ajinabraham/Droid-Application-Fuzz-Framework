@@ -24,6 +24,7 @@ def start_pdf_fuzz(pdf_reader, fuzz_type, limit=-1):
     print "PDF Reader: " + pdf_reader
     print "Fuzzer Type: " + fuzz_type
     print "Fuzz Iteration: " + str(limit)
+    utils.make_dirs()
     utils.adb_connection_int(settings.PDF_READERS)
     iteration = 1
     fuzz_server_url = "http://" + settings.FUZZ_IP + ":" + str(settings.SERVER_PORT)

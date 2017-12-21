@@ -1,3 +1,4 @@
+import os
 import subprocess
 import settings
 
@@ -26,3 +27,14 @@ def adb_kill():
     """
     adb = settings.ADB_BINARY
     subprocess.call([adb, "kill-server"])
+
+def make_dirs():
+    """
+    Make needed directories
+    """
+    valid_crash_dir = os.path.join(os.path.dirname(__file__), "crash")
+    fuzz_out_dir = os.path.join(os.path.dirname(__file__), "fuzz_files")
+    if not os.path.exists(fuzz_out_dir):
+        os.makedirs(fuzz_out_dir)
+    if not os.path.exists(valid_crash_dir):
+        os.makedirs(valid_crash_dir)

@@ -21,6 +21,7 @@ def start_browser_fuzz(browser, fuzz_type, limit=-1):
     print "Browser: " + browser
     print "Fuzzer Type: " + fuzz_type
     print "Fuzz Iteration: " + str(limit)
+    utils.make_dirs()
     utils.adb_connection_int(settings.BROWSERS)
     iteration = 1
     fuzz_server_url = "http://" + settings.FUZZ_IP + ":" + str(settings.SERVER_PORT)

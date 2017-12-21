@@ -173,13 +173,13 @@
    		 } else if (fuzzer === "pdf_reader"){
    		 	$.post("/pdf_fuzz", {
 		        pdf_reader: $("#pdf_reader option:selected").val(),
-		        fuzzer: $("#fuzz_type_browser option:selected").val(),
+		        fuzzer: $("#fuzz_type_pdf option:selected").val(),
 		        iteration: $("#iteration").val()
 		    });
 		    write_status("PDF Fuzzing Started!");
 		    write_status("["+new Date().toUTCString()+"]");
 		    write_status("PDF Reader: " + $("#pdf_reader option:selected").val());
-		    write_status("Fuzz Generator: " + $("#fuzz_type_browser option:selected").val());
+		    write_status("Fuzz Generator: " + $("#fuzz_type_pdf option:selected").val());
 		    write_status("Fuzz Iteration: " +  $("#iteration").val());
 
    		 }
@@ -187,7 +187,7 @@
     $( "#stop" ).one( "click", function() {
     	$('#stop').prop('disabled', true);
     	$.post("/stop");
-    	write_status("Server Killed!")
+    	write_status("["+new Date().toUTCString()+"] Server Killed!")
     });
     $(document).ready(function() {
     	check_fuzzer();
