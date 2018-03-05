@@ -7,7 +7,7 @@ Droid Application Fuzz Framework (DAFF) helps you to fuzz Android Browsers and P
 * [Google Chrome - com.android.chrome](https://play.google.com/store/apps/details?id=com.android.chrome)
 * [Mozilla Firefox - org.mozilla.firefox](https://play.google.com/store/apps/details?id=org.mozilla.firefox)
 * [Opera - com.opera.browser](https://play.google.com/store/apps/details?id=com.opera.browser)
-* [UCWeb - com.UCMobile.intl](https://play.google.com/store/apps/details?id=com.UCMobile.intl)
+* [UC Browser - com.UCMobile.intl](https://play.google.com/store/apps/details?id=com.UCMobile.intl)
 
 #### PDF Viewers/Readers
 
