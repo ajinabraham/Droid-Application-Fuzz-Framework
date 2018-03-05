@@ -1,14 +1,16 @@
 # Fuzz Server Settings
+FUZZ_IP = "192.168.0.101"
+# Device Settings
+DEVICE_ID = "4100fbee58948000"
+
 SERVER_IP = "0.0.0.0"
 SERVER_PORT = 1337
-FUZZ_IP = "192.168.0.103"
 FUZZ_WAIT = 13
 DEBUG = True
 ADB_BINARY = "adb"
 CRASH_IDENTIFIERS = ['SIGSEGV', 'SIGFPE', 'SIGILL']
 
-# Device Settings
-DEVICE_ID = "ZY222VQZWD"
+
 
 # Fuzz Targets
 BROWSERS = ["com.android.chrome", "org.mozilla.firefox",

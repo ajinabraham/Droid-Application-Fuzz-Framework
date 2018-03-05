@@ -4,6 +4,7 @@ Fuzz Server
 import os
 import re
 import sys
+import atexit
 
 from flask import (
     Flask,
@@ -128,6 +129,10 @@ def main():
     with open('static/index.html', 'r') as filep:
         return filep.read()
 
+def cleanup():
+    utils.adb_kill()
+
 if __name__ == '__main__':
+    atexit.register(cleanup)
     APP.run(threaded=True, host=settings.SERVER_IP,
             port=settings.SERVER_PORT, debug=settings.DEBUG)
