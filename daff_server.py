@@ -8,7 +8,7 @@ import sys
 from flask import (
     Flask,
     abort,
-    send_file,
+    send_from_directory,
     request,
     jsonify
 )
@@ -32,12 +32,9 @@ FILENAME_REGEX = re.compile(r"^[^\\\/]*\.(\w{3,4})$")
 def serve_html_pregenerated_files(filename):
     """Pre Generated HTML Files"""
     if filename.endswith(".html") and re.match(FILENAME_REGEX, filename):
-        pregen_pdf_dir = os.path.join(os.path.dirname(
+        pregen_html_dir = os.path.join(os.path.dirname(
             os.path.realpath(__file__)), "generators/html/htmls/")
-        fuzz_file = os.path.join(pregen_pdf_dir, filename)
-        if os.path.exists(fuzz_file):
-            return send_file(fuzz_file)
-        return "File Not Found!"
+        return send_from_directory(pregen_html_dir, filename)
     abort(404)
 
 
@@ -47,10 +44,7 @@ def serve_pdf_pregenerated_files(filename):
     if filename.endswith(".pdf") and re.match(FILENAME_REGEX, filename):
         pregen_pdf_dir = os.path.join(os.path.dirname(
             os.path.realpath(__file__)), "generators/pdf/pdfs")
-        fuzz_file = os.path.join(pregen_pdf_dir, filename)
-        if os.path.exists(fuzz_file):
-            return send_file(fuzz_file)
-        return "File Not Found!"
+        return send_from_directory(pregen_pdf_dir, filename)
     abort(404)
 
 
@@ -68,10 +62,7 @@ def serve_pdf_fuzz_files(filename):
     if filename.endswith(".pdf") and re.match(FILENAME_REGEX, filename):
         fuzz_output_dir = os.path.join(os.path.dirname(
             os.path.realpath(__file__)), "fuzz_files")
-        fuzz_file = os.path.join(fuzz_output_dir, filename)
-        if os.path.exists(fuzz_file):
-            return send_file(fuzz_file)
-        return "File Not Found!"
+        return send_from_directory(fuzz_output_dir, filename)
     abort(404)
 
 
@@ -119,6 +110,17 @@ def shutdown():
     func()
     return 'Server shutting down...'
 
+@APP.route('/js/<path:path>')
+def send_js(path):
+    js_dir = os.path.join(os.path.dirname(
+            os.path.realpath(__file__)), "static", "js")
+    return send_from_directory(js_dir, path)
+
+@APP.route('/css/<path:path>')
+def send_css(path):
+    css_dir = os.path.join(os.path.dirname(
+            os.path.realpath(__file__)), "static", "css")
+    return send_from_directory(css_dir, path)
 
 @APP.route('/', methods=['GET'])
 def main():

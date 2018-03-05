@@ -11,7 +11,7 @@
     <meta name="description" content="Droid Application Fuzzing Framework">
     <meta name="author" content="Ajin Abraham">
 
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
   </head>
   <body>
@@ -120,7 +120,9 @@
 					<input id="iteration" class="form-group" type="text" name="iteration" value="-1">
 				</div>
 			    </form>
-				<div align="center">
+				
+		    </div>
+		    <div align="center">
 					<button id="start" type="submit" class="btn btn-success">
 						Start Fuzzer
 					</button>
@@ -128,14 +130,34 @@
 						Kill Fuzzer
 					</button>
 				</div>
-		    </div>
 	    </div>
 </div>
+    <!--Footer-->
+      <footer class="page-footer font-small blue pt-4 mt-4">
+      
+          <!--Footer Links-->
+          <div class="container-fluid text-center text-md-left">
+              <div class="row">
+             </br>
+              </div>
+          </div>
+          <!--/.Footer Links-->
+      
+          <!--Copyright-->
+          <div class="footer-copyright py-3 text-center">
+              <div class="container-fluid">
+                  © Copyright | <a href="https://ajinabraham.com">Ajin Abraham</a> @ <a href="https://opensecurity.in"> OpenSecurity</a>
+
+              </div>
+          </div>
+          <!--/.Copyright-->
+      
+      </footer>
+      <!--/.Footer-->
 
 
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
   <script type="text/javascript">
   	function write_status(message){
@@ -186,6 +208,7 @@
      });
     $( "#stop" ).one( "click", function() {
     	$('#stop').prop('disabled', true);
+    	$('#start').prop('disabled', true);
     	$.post("/stop");
     	write_status("["+new Date().toUTCString()+"] Server Killed!")
     });

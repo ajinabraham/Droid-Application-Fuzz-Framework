@@ -1,10 +1,10 @@
 # Fuzz Server Settings
 SERVER_IP = "0.0.0.0"
 SERVER_PORT = 1337
-FUZZ_IP = "192.168.0.100"
+FUZZ_IP = "192.168.0.103"
 FUZZ_WAIT = 13
 DEBUG = True
-ADB_BINARY = "/Users/ajin/Library/Android/sdk/platform-tools/adb"
+ADB_BINARY = "adb"
 CRASH_IDENTIFIERS = ['SIGSEGV', 'SIGFPE', 'SIGILL']
 
 # Device Settings
