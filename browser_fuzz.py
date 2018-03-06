@@ -83,6 +83,9 @@ def browser_fuzz(browser, fuzz_type, iteration, url):
     logcat_args = [adb, 'logcat', '-d']
     logcat = subprocess.Popen(
         logcat_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()[0]
+    # clear logs
+    logcat_args = [adb, 'logcat', '-c']
+    subprocess.call(logcat_args)
     crash_identifiers = settings.CRASH_IDENTIFIERS
     if any(id_string in logcat for id_string in crash_identifiers):
         print "[VALID CRASH] - " + url

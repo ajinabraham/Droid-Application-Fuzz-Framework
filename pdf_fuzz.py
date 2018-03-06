@@ -110,6 +110,9 @@ def pdf_fuzz(pdf_reader, url, fuzz_type, iteration):
     logcat_args = [adb, 'logcat', '-d']
     logcat = subprocess.Popen(
         logcat_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT).communicate()[0]
+    # clear logs
+    logcat_args = [adb, 'logcat', '-c']
+    subprocess.call(logcat_args)
     crash_identifiers = settings.CRASH_IDENTIFIERS
     if any(id_string in logcat for id_string in crash_identifiers):
         print "[VALID CRASH] - " + url
