@@ -42,12 +42,12 @@ DAFF has three fuzzer modes:
 * In `settings.py` set the `DEVICE_ID` as the Android Device ID. You can find this with `adb devices` command.
 * Also set `FUZZ_IP` as the local IP of the computer. Use `ifconfig/ipconfig` command.
 * Set the path to adb binary in `ADB_BINARY` if `adb` is not in your `PATH`.
-* Run the Web GUI `python python daff_server.py`
+* Run the Web GUI `python daff_server.py`
 * Access the Fuzzer Web Interface at `http://0.0.0.0:1337`
 * Select the Application, Select the Fuzz Generator and Start Fuzzing!
 
 ### PS
 
-I am just open sourcing a private project for the benefit of community. I don't have time to actively maintain this project. If you have found bugs, fix them and send pull requests. That's how opensource should work! I have done my best to make the documentation clear and simple for all types of users. Please ask Google or Stack Overflow if you are stuck. Spare me!
+I am just open sourcing a private project for the benefit of community. I don't have time to actively maintain this project. If you have found bugs, fix them and send pull requests. That's how open source should work! I have done my best to make the documentation clear and simple for all types of users. Please ask Google or Stack Overflow if you are stuck.
 
 
