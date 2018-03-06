@@ -17,7 +17,7 @@ Droid Application Fuzz Framework (DAFF) helps you to fuzz Android Browsers and P
 * [Polaris Office - com.infraware.office.link](https://play.google.com/store/apps/details?id=com.infraware.office.link)
 * [WPS Office + PDF - cn.wps.moffice_eng (WIP)](https://play.google.com/store/apps/details?id=cn.wps.moffice_eng)
 
-### Fuzzer Generators
+### Fuzz Generators
 
 DAFF has three fuzzer modes:
 
