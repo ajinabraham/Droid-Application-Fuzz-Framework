@@ -46,12 +46,15 @@ DAFF has three fuzzer modes:
 * Access the Fuzzer Web Interface at `http://0.0.0.0:1337`
 * Select the Application, Select the Fuzz Generator and Start Fuzzing!
 
+### DAFF in Action
+[![DAFF in Action](https://user-images.githubusercontent.com/4301109/37017353-6a483630-2136-11e8-9550-677ca8189ef6.png)](https://youtu.be/vHhAj_yZ0kI)
+
 ### Extra Tip
 
 After installing the apps in Android Device, use them at least once. Allow popups, configure first time screens etc.
 
-### PS
+### Please Note
 
-I am just open sourcing a private project for the benefit of community. I don't have time to actively maintain this project. If you have found bugs, fix them and send pull requests. That's how open source should work! I have done my best to make the documentation clear and simple for all types of users. Please ask Google or Stack Overflow if you are stuck.
+I am just open sourcing a private project for the benefit of community. I don't have time to actively maintain this project. If you have found bugs, fix them and send pull requests. That's how open source should work! I have done my best to make the documentation clear and simple for all types of users. Please check Google or Stack Overflow if you are stuck.
 
 
