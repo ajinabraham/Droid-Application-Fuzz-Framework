@@ -14,8 +14,8 @@ Droid Application Fuzz Framework (DAFF) helps you to fuzz Android Browsers and P
 * [Adobe Acrobat Reader - com.adobe.reader](https://play.google.com/store/apps/details?id=com.adobe.reader)
 * [Foxit PDF Reader - com.foxit.mobile.pdf.lite](https://play.google.com/store/apps/details?id=com.foxit.mobile.pdf.lite)
 * [Google PDF Viewer - com.google.android.apps.pdfviewer](https://play.google.com/store/apps/details?id=com.google.android.apps.pdfviewer)
-* [Polaris Office - com.infraware.office.link](https://play.google.com/store/apps/details?id=com.infraware.office.link)
-* [WPS Office + PDF - cn.wps.moffice_eng (WIP)](https://play.google.com/store/apps/details?id=cn.wps.moffice_eng)
+* [WPS Office + PDF - cn.wps.moffice_eng](https://play.google.com/store/apps/details?id=cn.wps.moffice_eng)
+* [Polaris Office - com.infraware.office.link (WIP)](https://play.google.com/store/apps/details?id=com.infraware.office.link)
 
 ### Fuzz Generators
 
