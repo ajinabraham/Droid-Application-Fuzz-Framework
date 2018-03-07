@@ -23,7 +23,7 @@ DAFF has three fuzzer modes:
 
 1. **Google Domato** - Uses slightly modified version of [Google Domato](https://github.com/google/domato) for generating fuzz files.
 2. **Dumb Fuzzer** - As the the name suggests, a dumb fuzzer. (Only for PDF)
-3. **Pregenerated Files (3rd Party Fuzzer)** - To use your private or custom fuzzer generated files.
+3. **Pregenerated Files (3rd Party Fuzzer)** - To use your private or custom fuzzer generated files. Place html samples in `generators/html/htmls` and pdf samples in `generators/pdf/pdfs`
 
 ### Usage for Dummies
 
